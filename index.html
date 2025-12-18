@@ -2,9 +2,14 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Addon & Map Gue</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -14,7 +19,7 @@
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px;
+      overflow-x: hidden;
     }
 
     @keyframes gradientMove {
@@ -23,56 +28,161 @@
       100% { background-position: 0% 50%; }
     }
 
-    .logo {
-      width: 120px;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* ===== SPLASH SCREEN ===== */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
 
-    .card {
-      background: rgba(0,0,0,0.45);
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 15px;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    #splash.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .splash-logo {
+      width: 60vw;
+      max-width: 280px;
+      border-radius: 26px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
+      animation: logoPop 1.2s ease forwards;
+    }
+
+    @keyframes logoPop {
+      from {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .tap-text {
+      margin-top: 25px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: tapBlink 1.5s ease infinite;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes tapBlink {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* ===== CONTENT ===== */
+    .container {
+      padding: 24px;
+    }
+
+    .logo {
+      width: 65vw;
+      max-width: 260px;
+      margin: 20px auto 16px;
+      border-radius: 24px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      display: block;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1rem;
+      opacity: 0.95;
     }
 
     a.button {
       display: inline-block;
-      margin-top: 12px;
-      padding: 12px 25px;
+      margin-top: 18px;
+      padding: 14px 34px;
       background: linear-gradient(45deg, #ff004c, #8e2de2);
       color: white;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 999px;
       font-weight: bold;
+      font-size: 1rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     a.button:hover {
-      opacity: 0.85;
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(255,255,255,0.45);
+    }
+
+    a.button:active {
+      transform: scale(0.9);
+    }
+
+    .card {
+      background: rgba(0,0,0,0.45);
+      padding: 22px;
+      margin: 40px auto 0;
+      border-radius: 20px;
+      max-width: 420px;
+      box-shadow: 0 0 22px rgba(0,0,0,0.4);
+    }
+
+    /* ===== DESKTOP ===== */
+    @media (min-width: 768px) {
+      .logo {
+        width: 220px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Gambar / Icon -->
-  <img src="pack_icon.png" class="logo" alt="Pack Icon">
-
-  <h1>Addon & Map Saya</h1>
-  <p>Download addon & map buatan gue 🔥</p>
-
-  <a class="button" href="https://youtube.com/@gian_studio2607">
-    Subscribe Channel @GIANGAMING2607
-  </a>
-
-  <div class="card">
-    <h2>Addon Konstruksi</h2>
-    <p>Addon 3D model yang keren.</p>
-    <a class="button" href="https://sfl.gl/hATSC">Download</a>
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <img src="pack_icon.png" class="splash-logo" alt="Splash Logo">
+    <div class="tap-text">TAP TO START</div>
   </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <img src="pack_icon.png" class="logo" alt="Pack Icon">
+
+    <h1>Addon & Map Saya</h1>
+    <p>Download addon & map buatan gue 🔥</p>
+
+    <a class="button" href="https://youtube.com/@gian_studio2607">
+      Subscribe Channel @GIANGAMING2607
+    </a>
+
+    <div class="card">
+      <h2>Addon Konstruksi</h2>
+      <p>Addon 3D model yang keren.</p>
+      <a class="button" href="https://sfl.gl/hATSC">Download</a>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const splash = document.getElementById("splash");
+
+    splash.addEventListener("click", () => {
+      splash.classList.add("hide");
+    });
+  </script>
 
 </body>
 </html>
