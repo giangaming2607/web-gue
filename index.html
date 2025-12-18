@@ -8,11 +8,11 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
       background-size: 400% 400%;
-      animation: gradientMove 10s ease infinite;
+      animation: gradientMove 12s ease infinite;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;
     }
@@ -23,37 +23,55 @@
       100% { background-position: 0% 50%; }
     }
 
-    .card {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 400px;
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
-    a {
+    .card {
+      background: rgba(0,0,0,0.45);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    a.button {
       display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #4CAF50;
+      margin-top: 12px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #ff004c, #8e2de2);
       color: white;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    a.button:hover {
+      opacity: 0.85;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Download Addon & Map Saya</h1>
-  <h2>Subscribe Channel GIANGAMING2607</h2>
+  <!-- Gambar / Icon -->
+  <img src="pack_icon.png" class="logo" alt="Pack Icon">
 
-  <a href="https://youtube.com/@gian_studio2607" target="_blank">Subscribe</a>
+  <h1>Addon & Map Saya</h1>
+  <p>Download addon & map buatan gue 🔥</p>
+
+  <a class="button" href="https://youtube.com/@gian_studio2607">
+    Subscribe Channel @GIANGAMING2607
+  </a>
 
   <div class="card">
     <h2>Addon Konstruksi</h2>
     <p>Addon 3D model yang keren.</p>
-    <a href="https://sfl.gl/hATSC">Download</a>
+    <a class="button" href="https://sfl.gl/hATSC">Download</a>
   </div>
 
 </body>
