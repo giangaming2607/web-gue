@@ -1,65 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Download Add-on dan Map saya</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: white;
-      text-align: center;
-      padding: 40px;
-    }
-    .card {
-      background: #1e1e1e;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 400px;
-    }
-    a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
+  <title>Addon & Map Saya</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Addon & Map Saya</h1>
+<header>
+  <h1>Addon & Map Saya</h1>
+</header>
 
-<div class="card">
-  <h2>Addon Zombie v1.0</h2>
-  <p>Addon zombie buatan saya.</p>
-  <a href="LINK_DOWNLOAD_KAMU">Download</a>
-</div>
+<main class="grid">
 
-<div class="card">
-  <h2>Map Survival</h2>
-  <p>Map survival buatan saya.</p>
-  <a href="LINK_DOWNLOAD_KAMU">Download</a>
-</div>
+  <div class="card">
+    <img src="https://via.placeholder.com/400x220" alt="Addon Zombie">
+    <div class="card-body">
+      <h2>Addon Zombie v1.0</h2>
+      <p>Addon zombie buatan saya untuk Minecraft.</p>
+      <a href="addon-zombie.html" class="btn">Lihat Detail</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/400x220" alt="Map Survival">
+    <div class="card-body">
+      <h2>Map Survival</h2>
+      <p>Map survival hardcore buatan saya.</p>
+      <a href="map-survival.html" class="btn">Lihat Detail</a>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Addon Zombie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Addon Zombie v1.0</h1>
+</header>
+
+<main style="padding:20px; max-width:800px; margin:auto;">
+  <img src="https://via.placeholder.com/600x300" style="width:100%; border-radius:10px">
+
+  <p>
+    Addon Zombie menambahkan mob zombie baru,
+    item, dan fitur tambahan ke Minecraft Bedrock.
+  </p>
+
+  <a href="LINK_DOWNLOAD_KAMU" class="btn">Download</a>
+  <br><br>
+  <a href="index.html">← Kembali</a>
+</main>
 
 </body>
 </html>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   background: #0f0f0f;
-  color: #fff;
+  color: #ffffff;
 }
 
-.title {
-  text-align: center;
+header {
   padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 1px solid #222;
 }
 
-.container {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
@@ -67,42 +88,69 @@ body {
 }
 
 .card {
-  background: #1c1c1c;
-  border-radius: 10px;
+  background: #1a1a1a;
+  border-radius: 12px;
   overflow: hidden;
-  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 .card img {
   width: 100%;
+  display: block;
 }
 
-.card h2 {
-  margin: 10px 0;
+.card-body {
+  padding: 15px;
 }
 
-.card p {
-  color: #aaa;
+.card-body h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.card-body p {
+  font-size: 14px;
+  color: #bbb;
 }
 
 .btn {
   display: inline-block;
-  margin: 15px;
-  padding: 10px 20px;
-  background: #4CAF50;
-  color: white;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #22c55e;
+  color: #000;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+/* ANIMASI MASUK */
+.card {
+  animation: fadeUp 0.6s ease forwards;
 }
 
-.detail {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.detail img {
-  width: 100%;
-  border-radius: 10px;
+/* ANIMASI HOVER / TAP */
+.card:hover {
+  transform: scale(1.03);
+  transition: 0.3s ease;
+}
+
+/* TOMBOL */
+.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34,197,94,0.4);
 }
