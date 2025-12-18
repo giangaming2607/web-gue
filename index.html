@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  body {
+  background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
   <meta charset="UTF-8">
   <title>Addon & Map Gue</title>
   <style>
