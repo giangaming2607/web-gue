@@ -6,10 +6,6 @@
   <title>Addon & Map Gue</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       min-height: 100vh;
@@ -57,32 +53,23 @@
     }
 
     @keyframes logoPop {
-      from {
-        transform: scale(0.6);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .tap-text {
       margin-top: 25px;
       font-size: 1.1rem;
       letter-spacing: 2px;
-      opacity: 0;
-      animation: tapBlink 1.5s ease infinite;
-      animation-delay: 1.2s;
+      animation: blink 1.5s infinite;
     }
 
-    @keyframes tapBlink {
-      0% { opacity: 0; }
+    @keyframes blink {
+      0%,100% { opacity: 0; }
       50% { opacity: 1; }
-      100% { opacity: 0; }
     }
 
-    /* ===== CONTENT ===== */
+    /* ===== MAIN CONTENT ===== */
     .container {
       padding: 24px;
     }
@@ -96,15 +83,8 @@
       display: block;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      margin: 10px 0;
-    }
-
-    p {
-      font-size: 1rem;
-      opacity: 0.95;
-    }
+    h1 { font-size: 1.8rem; }
+    p { opacity: 0.95; }
 
     a.button {
       display: inline-block;
@@ -115,13 +95,6 @@
       text-decoration: none;
       border-radius: 999px;
       font-weight: bold;
-      font-size: 1rem;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    a.button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px rgba(255,255,255,0.45);
     }
 
     a.button:active {
@@ -134,38 +107,46 @@
       margin: 40px auto 0;
       border-radius: 20px;
       max-width: 420px;
-      box-shadow: 0 0 22px rgba(0,0,0,0.4);
     }
 
-    /* ===== DESKTOP ===== */
-    @media (min-width: 768px) {
-      .logo {
-        width: 220px;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
+    /* ===== MUTE BUTTON ===== */
+    #muteBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      color: white;
+      font-size: 20px;
+      padding: 12px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 999;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SPLASH SCREEN -->
+  <!-- AUDIO -->
+  <audio id="bgm" loop>
+    <source src="laguku.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- SPLASH -->
   <div id="splash">
-    <img src="pack_icon.png" class="splash-logo" alt="Splash Logo">
+    <img src="pack_icon.png" class="splash-logo" alt="Logo">
     <div class="tap-text">TAP TO START</div>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <div class="container">
     <img src="pack_icon.png" class="logo" alt="Pack Icon">
-
     <h1>Addon & Map Saya</h1>
-    <p>Download addon & map buatan saya 🔥</p>
+    <p>Download addon & map buatan gue 🔥</p>
 
     <a class="button" href="https://youtube.com/@gian_studio2607">
-      Subscribe Channel Saya 🔥🚀
+      Subscribe Channel @GIANGAMING2607
     </a>
 
     <div class="card">
@@ -175,12 +156,43 @@
     </div>
   </div>
 
+  <!-- MUTE BUTTON -->
+  <button id="muteBtn">🔊</button>
+
   <!-- SCRIPT -->
   <script>
     const splash = document.getElementById("splash");
+    const bgm = document.getElementById("bgm");
+    const muteBtn = document.getElementById("muteBtn");
+
+    let isMuted = false;
+
+    // Fade-in audio
+    function fadeInAudio() {
+      bgm.volume = 0;
+      bgm.play();
+      let vol = 0;
+      const target = /Mobi|Android/i.test(navigator.userAgent) ? 0.25 : 0.5;
+
+      const fade = setInterval(() => {
+        if (vol < target) {
+          vol += 0.02;
+          bgm.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 100);
+    }
 
     splash.addEventListener("click", () => {
+      fadeInAudio();
       splash.classList.add("hide");
+    });
+
+    muteBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      bgm.muted = isMuted;
+      muteBtn.textContent = isMuted ? "🔇" : "🔊";
     });
   </script>
 
