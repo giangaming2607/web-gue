@@ -6,7 +6,6 @@
 <title>Addon & Map Gue</title>
 
 <style>
-/* ===== BODY ===== */
 body {
   margin: 0;
   min-height: 100vh;
@@ -25,7 +24,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ===== SPLASH ===== */
+/* SPLASH */
 #splash {
   position: fixed;
   inset: 0;
@@ -37,13 +36,9 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity .8s ease, visibility .8s ease;
+  transition: .8s;
 }
-
-#splash.hide {
-  opacity: 0;
-  visibility: hidden;
-}
+#splash.hide { opacity: 0; visibility: hidden; }
 
 .splash-logo {
   width: 60vw;
@@ -52,7 +47,6 @@ body {
   box-shadow: 0 0 30px rgba(0,0,0,.7);
   animation: logoPop 1.2s ease forwards;
 }
-
 @keyframes logoPop {
   from { transform: scale(.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
@@ -63,28 +57,21 @@ body {
   letter-spacing: 2px;
   animation: blink 1.5s infinite;
 }
-
 @keyframes blink {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
 }
 
-/* ===== MAIN ===== */
-.container {
-  padding: 24px;
-}
+/* MAIN */
+.container { padding: 24px; }
 
 .logo {
   width: 65vw;
   max-width: 260px;
-  margin: 20px auto 16px;
+  margin: 20px auto;
   border-radius: 24px;
   box-shadow: 0 0 25px rgba(0,0,0,.6);
-  display: block;
 }
-
-h1 { font-size: 1.8rem; }
-p { opacity: .95; }
 
 .button {
   display: inline-block;
@@ -96,10 +83,9 @@ p { opacity: .95; }
   border-radius: 999px;
   font-weight: bold;
 }
-
 .button:active { transform: scale(.9); }
 
-/* ===== CARD ===== */
+/* CARD */
 .card {
   background: rgba(0,0,0,.45);
   padding: 22px;
@@ -108,47 +94,58 @@ p { opacity: .95; }
   max-width: 420px;
 }
 
-/* ===== LINKTREE BUTTON ===== */
-.links {
-  margin-top: 40px;
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: auto;
+/* SOCIAL ICON BULAT */
+.social-circle {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
 }
 
-.link-btn {
-  display: block;
-  padding: 16px;
-  margin: 14px 0;
-  background: rgba(0,0,0,.55);
-  border-radius: 18px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  backdrop-filter: blur(6px);
+.social-circle a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
 }
 
-.link-btn:active { transform: scale(.94); }
+.social-circle img {
+  width: 22px;
+  height: 22px;
+  filter: invert(1);
+}
 
-/* ===== ANIMASI MASUK ===== */
+.social-circle a:hover {
+  transform: scale(1.15);
+  background: white;
+}
+
+.social-circle a:hover img {
+  filter: invert(0);
+}
+
+/* ANIMASI MASUK */
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp .8s ease forwards;
   animation-play-state: paused;
 }
-
-.delay-1 { animation-delay: .2s; }
-.delay-2 { animation-delay: .4s; }
-.delay-3 { animation-delay: .6s; }
-.delay-4 { animation-delay: .8s; }
-.delay-5 { animation-delay: 1s; }
+.delay-1{animation-delay:.2s}
+.delay-2{animation-delay:.4s}
+.delay-3{animation-delay:.6s}
+.delay-4{animation-delay:.8s}
+.delay-5{animation-delay:1s}
 
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== MUTE ===== */
+/* MUTE */
 #muteBtn {
   position: fixed;
   bottom: 20px;
@@ -157,27 +154,23 @@ p { opacity: .95; }
   border: none;
   color: white;
   font-size: 20px;
-  padding: 12px 14px;
+  padding: 12px;
   border-radius: 50%;
-  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgm" loop>
   <source src="laguku2.mp3" type="audio/mpeg">
 </audio>
 
-<!-- SPLASH -->
 <div id="splash">
   <img src="pack_icon.png" class="splash-logo">
   <div class="tap-text">TAP TO START</div>
 </div>
 
-<!-- MAIN -->
 <div class="container">
   <img src="pack_icon.png" class="logo fade-up delay-1">
   <h1 class="fade-up delay-2">Addon & Map Saya</h1>
@@ -188,12 +181,20 @@ p { opacity: .95; }
      Subscribe Channel
   </a>
 
-  <div class="links fade-up delay-4">
-    <h2>🔗 Link Saya</h2>
-    <a class="https://youtube.com/@gian_studio2607?si=5MW6rEhrtqzGhlpX" href="#">▶ YouTube</a>
-    <a class="https://discord.com/invite/mErvR6d5CW" href="#">💬 Discord</a>
-    <a class="https://www.tiktok.com/@remanrhn_lovers?_r=1&_t=ZS-92UBrfRqB96" href="#">🎵 TikTok</a>
-    <a class="https://www.instagram.com/gian_aditya26?igsh=MXJnOW91OHIxOThsZw==" href="#">📸 Instagram</a>
+  <h2 class="fade-up delay-4">Link Saya</h2>
+  <div class="social-circle fade-up delay-4">
+    <a href="https://youtube.com/@gian_studio2607" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg">
+    </a>
+    <a href="https://discord.com/invite/mErvR6d5CW" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
+    </a>
+    <a href="https://www.tiktok.com/@remanrhn_lovers" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tiktok.svg">
+    </a>
+    <a href="https://www.instagram.com/gian_aditya26" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
+    </a>
   </div>
 
   <div class="card fade-up delay-4">
@@ -221,21 +222,20 @@ function fadeInAudio() {
   bgm.volume = 0;
   bgm.play();
   let v = 0;
-  const target = 0.4;
   const fade = setInterval(() => {
-    if (v < target) {
+    if (v < 0.4) {
       v += 0.02;
       bgm.volume = v;
     } else clearInterval(fade);
   }, 100);
 }
 
-splash.addEventListener("click", () => {
+splash.onclick = () => {
   fadeInAudio();
   splash.classList.add("hide");
   document.querySelectorAll(".fade-up")
     .forEach(el => el.style.animationPlayState = "running");
-});
+};
 
 muteBtn.onclick = () => {
   isMuted = !isMuted;
