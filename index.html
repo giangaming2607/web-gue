@@ -15,7 +15,6 @@ body {
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
-  overflow-x: hidden;
 }
 
 @keyframes gradientMove {
@@ -28,35 +27,22 @@ body {
 #splash {
   position: fixed;
   inset: 0;
-  background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
-  background-size: 400% 400%;
-  animation: gradientMove 8s ease infinite;
+  background: inherit;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 9999;
   transition: .8s;
 }
-#splash.hide {
-  opacity: 0;
-  visibility: hidden;
-}
+#splash.hide { opacity: 0; visibility: hidden; }
 
-/* LOGO SPLASH BULAT */
 .splash-logo {
   width: 60vw;
-  max-width: 280px;
+  max-width: 260px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  object-fit: cover;
   box-shadow: 0 0 30px rgba(0,0,0,.7);
-  animation: logoPop 1.2s ease forwards;
-}
-
-@keyframes logoPop {
-  from { transform: scale(.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
 .tap-text {
@@ -65,25 +51,21 @@ body {
   animation: blink 1.5s infinite;
 }
 @keyframes blink {
-  0%,100% { opacity: 0; }
-  50% { opacity: 1; }
+  0%,100%{opacity:0}
+  50%{opacity:1}
 }
 
 /* MAIN */
 .container { padding: 24px; }
 
-/* LOGO UTAMA BULAT */
 .logo {
   width: 65vw;
   max-width: 260px;
   aspect-ratio: 1/1;
-  margin: 20px auto;
   border-radius: 50%;
-  object-fit: cover;
   box-shadow: 0 0 25px rgba(0,0,0,.6);
 }
 
-/* BUTTON */
 .button {
   display: inline-block;
   margin-top: 18px;
@@ -94,7 +76,6 @@ body {
   border-radius: 999px;
   font-weight: bold;
 }
-.button:active { transform: scale(.9); }
 
 /* CARD */
 .card {
@@ -105,153 +86,132 @@ body {
   max-width: 420px;
 }
 
-/* SOCIAL ICON BULAT */
-.social-circle {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.social-circle a {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: .3s;
-}
-
-.social-circle img {
-  width: 22px;
-  height: 22px;
-  filter: invert(1);
-}
-
-.social-circle a:hover {
-  transform: scale(1.15);
-  background: white;
-}
-
-.social-circle a:hover img {
-  filter: invert(0);
-}
-
-/* ANIMASI MASUK */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp .8s ease forwards;
-  animation-play-state: paused;
-}
-.delay-1{animation-delay:.2s}
-.delay-2{animation-delay:.4s}
-.delay-3{animation-delay:.6s}
-.delay-4{animation-delay:.8s}
-.delay-5{animation-delay:1s}
-
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* MUTE */
+/* 🔊 TOMBOL SUARA */
 #muteBtn {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgba(0,0,0,.6);
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 12px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0,0,0,.6);
+  cursor: pointer;
+}
+
+#muteBtn svg {
+  width: 26px;
+  height: 26px;
+  fill: white;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" loop>
-  <source src="laguku2.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgm" src="laguku2.mp3" loop></audio>
 
+<!-- SPLASH -->
 <div id="splash">
   <img src="pack_icon.png" class="splash-logo">
-  <div class="tap-text">Click Untuk Membuka🔥</div>
+  <div class="tap-text">TAP TO START</div>
 </div>
 
+<!-- MAIN -->
 <div class="container">
-  <img src="pack_icon.png" class="logo fade-up delay-1">
+  <img src="pack_icon.png" class="logo">
+  <h1>Addon & Map Saya</h1>
+  <p>Download addon & map buatan saya 🔥</p>
 
-  <h1 class="fade-up delay-2">Addon & Map Saya</h1>
-  <p class="fade-up delay-3">Download addon & map buatan saya 🔥</p>
-
-  <a class="button fade-up delay-4"
-     href="https://discord.com/invite/mErvR6d5CW">
-     Jadilah yang pertama buat menjadi Membership kami🔥🔥
+  <a class="button" href="https://youtube.com/@gian_studio2607">
+    Subscribe Channel
   </a>
 
-  <h2 class="fade-up delay-4">Media Sosial Saya</h2>
-  <div class="social-circle fade-up delay-4">
-    <a href="https://youtube.com/@gian_studio2607" target="_blank">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg">
-    </a>
-    <a href="https://discord.com/invite/mErvR6d5CW" target="_blank">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
-    </a>
-    <a href="https://www.tiktok.com/@remanrhn_lovers" target="_blank">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tiktok.svg">
-    </a>
-    <a href="https://www.instagram.com/gian_aditya26" target="_blank">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
-    </a>
-  </div
-  <div class="card fade-up delay-4">
+  <div class="card">
     <h2>Addon Konstruksi</h2>
     <p>Addon 3D model yang keren.</p>
     <a class="button" href="https://sfl.gl/hATSC">Download</a>
   </div>
 
-  <div class="card fade-up delay-5">
+  <div class="card">
     <h2>Addon Login Register</h2>
     <p>Support versi 1.21.93+</p>
     <a class="button" href="https://sfl.gl/qyXERZf">Download</a>
   </div>
 </div>
 
-<button id="muteBtn">🔊</button>
+<!-- 🔊 BUTTON -->
+<button id="muteBtn">
+  <svg id="iconOn" viewBox="0 0 24 24">
+    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02z"/>
+  </svg>
+  <svg id="iconOff" viewBox="0 0 24 24" style="display:none">
+    <path d="M4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.21v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3z"/>
+  </svg>
+</button>
 
 <script>
+const audio = document.getElementById("bgm");
 const splash = document.getElementById("splash");
-const bgm = document.getElementById("bgm");
 const muteBtn = document.getElementById("muteBtn");
-let isMuted = false;
+const iconOn = document.getElementById("iconOn");
+const iconOff = document.getElementById("iconOff");
 
-function fadeInAudio() {
-  bgm.volume = 0;
-  bgm.play();
-  let v = 0;
-  const fade = setInterval(() => {
-    if (v < 0.4) {
-      v += 0.02;
-      bgm.volume = v;
-    } else clearInterval(fade);
-  }, 100);
+let audioCtx, analyser, source, dataArray;
+let muted = false;
+
+function initAudio() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 256;
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+  source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+
+  audio.volume = 0.5;
+  audio.play();
+  animateBeat();
+}
+
+function animateBeat() {
+  requestAnimationFrame(animateBeat);
+  analyser.getByteFrequencyData(dataArray);
+
+  let sum = 0;
+  for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+  let avg = sum / dataArray.length;
+
+  let scale = 1 + avg / 400;
+  let glow = avg / 2;
+
+  if (!muted) {
+    muteBtn.style.transform = `scale(${scale})`;
+    muteBtn.style.boxShadow = `0 0 ${glow}px rgba(255,255,255,.9)`;
+  }
 }
 
 splash.onclick = () => {
-  fadeInAudio();
   splash.classList.add("hide");
-  document.querySelectorAll(".fade-up")
-    .forEach(el => el.style.animationPlayState = "running");
+  initAudio();
 };
 
 muteBtn.onclick = () => {
-  isMuted = !isMuted;
-  bgm.muted = isMuted;
-  muteBtn.textContent = isMuted ? "🔇" : "🔊";
+  muted = !muted;
+  audio.muted = muted;
+
+  iconOn.style.display = muted ? "none" : "block";
+  iconOff.style.display = muted ? "block" : "none";
+
+  if (muted) {
+    muteBtn.style.transform = "scale(1)";
+    muteBtn.style.boxShadow = "0 0 20px rgba(0,0,0,.6)";
+  }
 };
 </script>
 
