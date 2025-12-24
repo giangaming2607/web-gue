@@ -15,6 +15,7 @@ body {
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
+  overflow-x: hidden;
 }
 
 @keyframes gradientMove {
@@ -27,11 +28,13 @@ body {
 #splash {
   position: fixed;
   inset: 0;
-  background: inherit;
+  background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 9999;
   transition: .8s;
 }
@@ -39,20 +42,10 @@ body {
 
 .splash-logo {
   width: 60vw;
-  max-width: 260px;
+  max-width: 280px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   box-shadow: 0 0 30px rgba(0,0,0,.7);
-}
-
-.tap-text {
-  margin-top: 25px;
-  letter-spacing: 2px;
-  animation: blink 1.5s infinite;
-}
-@keyframes blink {
-  0%,100%{opacity:0}
-  50%{opacity:1}
 }
 
 /* MAIN */
@@ -99,7 +92,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(0,0,0,.6);
+  box-shadow: 0 0 18px rgba(0,0,0,.6);
   cursor: pointer;
 }
 
@@ -118,7 +111,7 @@ body {
 <!-- SPLASH -->
 <div id="splash">
   <img src="pack_icon.png" class="splash-logo">
-  <div class="tap-text">TAP TO START</div>
+  <div style="margin-top:25px;letter-spacing:2px;">TAP TO START</div>
 </div>
 
 <!-- MAIN -->
@@ -144,7 +137,7 @@ body {
   </div>
 </div>
 
-<!-- 🔊 BUTTON -->
+<!-- 🔊 BUTTON SVG -->
 <button id="muteBtn">
   <svg id="iconOn" viewBox="0 0 24 24">
     <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02z"/>
@@ -161,36 +154,35 @@ const muteBtn = document.getElementById("muteBtn");
 const iconOn = document.getElementById("iconOn");
 const iconOff = document.getElementById("iconOff");
 
-let audioCtx, analyser, source, dataArray;
+let ctx, analyser, src, data;
 let muted = false;
 
-function initAudio() {
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  analyser = audioCtx.createAnalyser();
+function initBeat() {
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = ctx.createAnalyser();
   analyser.fftSize = 256;
-  dataArray = new Uint8Array(analyser.frequencyBinCount);
+  data = new Uint8Array(analyser.frequencyBinCount);
 
-  source = audioCtx.createMediaElementSource(audio);
-  source.connect(analyser);
-  analyser.connect(audioCtx.destination);
+  src = ctx.createMediaElementSource(audio);
+  src.connect(analyser);
+  analyser.connect(ctx.destination);
 
   audio.volume = 0.5;
   audio.play();
-  animateBeat();
+  animate();
 }
 
-function animateBeat() {
-  requestAnimationFrame(animateBeat);
-  analyser.getByteFrequencyData(dataArray);
+function animate() {
+  requestAnimationFrame(animate);
+  analyser.getByteFrequencyData(data);
 
   let sum = 0;
-  for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
-  let avg = sum / dataArray.length;
-
-  let scale = 1 + avg / 400;
-  let glow = avg / 2;
+  for (let i = 0; i < data.length; i++) sum += data[i];
+  let avg = sum / data.length;
 
   if (!muted) {
+    let scale = 1 + avg / 400;
+    let glow = avg / 2;
     muteBtn.style.transform = `scale(${scale})`;
     muteBtn.style.boxShadow = `0 0 ${glow}px rgba(255,255,255,.9)`;
   }
@@ -198,7 +190,7 @@ function animateBeat() {
 
 splash.onclick = () => {
   splash.classList.add("hide");
-  initAudio();
+  initBeat();
 };
 
 muteBtn.onclick = () => {
@@ -210,7 +202,7 @@ muteBtn.onclick = () => {
 
   if (muted) {
     muteBtn.style.transform = "scale(1)";
-    muteBtn.style.boxShadow = "0 0 20px rgba(0,0,0,.6)";
+    muteBtn.style.boxShadow = "0 0 18px rgba(0,0,0,.6)";
   }
 };
 </script>
