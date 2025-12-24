@@ -1,207 +1,248 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Addon & Map Gue</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addon & Map Gue</title>
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    /* ===== SPLASH SCREEN ===== */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
-      background-size: 400% 400%;
-      animation: gradientMove 8s ease infinite;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
+/* ===== SPLASH ===== */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(270deg, #ff004c, #3f51ff, #8e2de2);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity .8s ease, visibility .8s ease;
+}
 
-    #splash.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+}
 
-    .splash-logo {
-      width: 60vw;
-      max-width: 280px;
-      border-radius: 26px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
-      animation: logoPop 1.2s ease forwards;
-    }
+.splash-logo {
+  width: 60vw;
+  max-width: 280px;
+  border-radius: 26px;
+  box-shadow: 0 0 30px rgba(0,0,0,.7);
+  animation: logoPop 1.2s ease forwards;
+}
 
-    @keyframes logoPop {
-      from { transform: scale(0.6); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+@keyframes logoPop {
+  from { transform: scale(.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .tap-text {
-      margin-top: 25px;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      animation: blink 1.5s infinite;
-    }
+.tap-text {
+  margin-top: 25px;
+  letter-spacing: 2px;
+  animation: blink 1.5s infinite;
+}
 
-    @keyframes blink {
-      0%,100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
+@keyframes blink {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
 
-    /* ===== MAIN CONTENT ===== */
-    .container {
-      padding: 24px;
-    }
+/* ===== MAIN ===== */
+.container {
+  padding: 24px;
+}
 
-    .logo {
-      width: 65vw;
-      max-width: 260px;
-      margin: 20px auto 16px;
-      border-radius: 24px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      display: block;
-    }
+.logo {
+  width: 65vw;
+  max-width: 260px;
+  margin: 20px auto 16px;
+  border-radius: 24px;
+  box-shadow: 0 0 25px rgba(0,0,0,.6);
+  display: block;
+}
 
-    h1 { font-size: 1.8rem; }
-    p { opacity: 0.95; }
+h1 { font-size: 1.8rem; }
+p { opacity: .95; }
 
-    a.button {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 14px 34px;
-      background: linear-gradient(45deg, #ff004c, #8e2de2);
-      color: white;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: bold;
-    }
+.button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 34px;
+  background: linear-gradient(45deg, #ff004c, #8e2de2);
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: bold;
+}
 
-    a.button:active {
-      transform: scale(0.9);
-    }
+.button:active { transform: scale(.9); }
 
-    .card {
-      background: rgba(0,0,0,0.45);
-      padding: 22px;
-      margin: 40px auto 0;
-      border-radius: 20px;
-      max-width: 420px;
-    }
+/* ===== CARD ===== */
+.card {
+  background: rgba(0,0,0,.45);
+  padding: 22px;
+  margin: 40px auto 0;
+  border-radius: 20px;
+  max-width: 420px;
+}
 
-    /* ===== MUTE BUTTON ===== */
-    #muteBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.6);
-      border: none;
-      color: white;
-      font-size: 20px;
-      padding: 12px 14px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 999;
-    }
-  </style>
+/* ===== LINKTREE BUTTON ===== */
+.links {
+  margin-top: 40px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.link-btn {
+  display: block;
+  padding: 16px;
+  margin: 14px 0;
+  background: rgba(0,0,0,.55);
+  border-radius: 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  backdrop-filter: blur(6px);
+}
+
+.link-btn:active { transform: scale(.94); }
+
+/* ===== ANIMASI MASUK ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp .8s ease forwards;
+  animation-play-state: paused;
+}
+
+.delay-1 { animation-delay: .2s; }
+.delay-2 { animation-delay: .4s; }
+.delay-3 { animation-delay: .6s; }
+.delay-4 { animation-delay: .8s; }
+.delay-5 { animation-delay: 1s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MUTE ===== */
+#muteBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,.6);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 12px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- AUDIO -->
-  <audio id="bgm" loop>
-    <source src="laguku2.mp3" type="audio/mpeg">
-  </audio>
+<!-- AUDIO -->
+<audio id="bgm" loop>
+  <source src="laguku2.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- SPLASH -->
-  <div id="splash">
-    <img src="pack_icon.png" class="splash-logo" alt="Logo">
-    <div class="tap-text">TAP TO START</div>
-  </div>
-
-  <!-- MAIN -->
-  <div class="container">
-    <img src="pack_icon.png" class="logo" alt="Pack Icon">
-    <h1>Addon & Map Saya</h1>
-    <p>Download addon & map buatan saya 🔥</p>
-
-    <a class="button" href="https://youtube.com/@gian_studio2607">
-      Subscribe Channel @GIANGAMING2607
-    </a>
-
-    <div class="card">
-      <h2>Addon Konstruksi</h2>
-      <p>Addon 3D model yang keren.</p>
-      <a class="button" href="https://sfl.gl/hATSC">Download</a>
-    </div>
-  </div>
-
-  <div class="card">
-      <h2>Addon Login Register</h2>
-      <p>Addon ini suport versi 1.21.93+</p>
-      <a class="button" href="https://sfl.gl/qyXERZf">Download</a>
-    </div>
+<!-- SPLASH -->
+<div id="splash">
+  <img src="pack_icon.png" class="splash-logo">
+  <div class="tap-text">TAP TO START</div>
 </div>
 
-  <!-- MUTE BUTTON -->
-  <button id="muteBtn">🔊</button>
+<!-- MAIN -->
+<div class="container">
+  <img src="pack_icon.png" class="logo fade-up delay-1">
+  <h1 class="fade-up delay-2">Addon & Map Saya</h1>
+  <p class="fade-up delay-3">Download addon & map buatan saya 🔥</p>
 
-  <!-- SCRIPT -->
-  <script>
-    const splash = document.getElementById("splash");
-    const bgm = document.getElementById("bgm");
-    const muteBtn = document.getElementById("muteBtn");
+  <a class="button fade-up delay-4"
+     href="https://youtube.com/@gian_studio2607">
+     Subscribe Channel
+  </a>
 
-    let isMuted = false;
+  <div class="links fade-up delay-4">
+    <h2>🔗 Link Saya</h2>
+    <a class="https://youtube.com/@gian_studio2607?si=5MW6rEhrtqzGhlpX" href="#">▶ YouTube</a>
+    <a class="https://discord.com/invite/mErvR6d5CW" href="#">💬 Discord</a>
+    <a class="https://www.tiktok.com/@remanrhn_lovers?_r=1&_t=ZS-92UBrfRqB96" href="#">🎵 TikTok</a>
+    <a class="https://www.instagram.com/gian_aditya26?igsh=MXJnOW91OHIxOThsZw==" href="#">📸 Instagram</a>
+  </div>
 
-    // Fade-in audio
-    function fadeInAudio() {
-      bgm.volume = 0;
-      bgm.play();
-      let vol = 0;
-      const target = /Mobi|Android/i.test(navigator.userAgent) ? 0.25 : 0.5;
+  <div class="card fade-up delay-4">
+    <h2>Addon Konstruksi</h2>
+    <p>Addon 3D model yang keren.</p>
+    <a class="button" href="https://sfl.gl/hATSC">Download</a>
+  </div>
 
-      const fade = setInterval(() => {
-        if (vol < target) {
-          vol += 0.02;
-          bgm.volume = vol;
-        } else {
-          clearInterval(fade);
-        }
-      }, 100);
-    }
+  <div class="card fade-up delay-5">
+    <h2>Addon Login Register</h2>
+    <p>Support versi 1.21.93+</p>
+    <a class="button" href="https://sfl.gl/qyXERZf">Download</a>
+  </div>
+</div>
 
-    splash.addEventListener("click", () => {
-      fadeInAudio();
-      splash.classList.add("hide");
-    });
+<button id="muteBtn">🔊</button>
 
-    muteBtn.addEventListener("click", () => {
-      isMuted = !isMuted;
-      bgm.muted = isMuted;
-      muteBtn.textContent = isMuted ? "🔇" : "🔊";
-    });
-  </script>
+<script>
+const splash = document.getElementById("splash");
+const bgm = document.getElementById("bgm");
+const muteBtn = document.getElementById("muteBtn");
+let isMuted = false;
+
+function fadeInAudio() {
+  bgm.volume = 0;
+  bgm.play();
+  let v = 0;
+  const target = 0.4;
+  const fade = setInterval(() => {
+    if (v < target) {
+      v += 0.02;
+      bgm.volume = v;
+    } else clearInterval(fade);
+  }, 100);
+}
+
+splash.addEventListener("click", () => {
+  fadeInAudio();
+  splash.classList.add("hide");
+  document.querySelectorAll(".fade-up")
+    .forEach(el => el.style.animationPlayState = "running");
+});
+
+muteBtn.onclick = () => {
+  isMuted = !isMuted;
+  bgm.muted = isMuted;
+  muteBtn.textContent = isMuted ? "🔇" : "🔊";
+};
+</script>
 
 </body>
 </html>
