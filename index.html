@@ -38,15 +38,22 @@ body {
   z-index: 9999;
   transition: .8s;
 }
-#splash.hide { opacity: 0; visibility: hidden; }
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+}
 
+/* LOGO SPLASH BULAT */
 .splash-logo {
   width: 60vw;
   max-width: 280px;
-  border-radius: 26px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 0 30px rgba(0,0,0,.7);
   animation: logoPop 1.2s ease forwards;
 }
+
 @keyframes logoPop {
   from { transform: scale(.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
@@ -65,14 +72,18 @@ body {
 /* MAIN */
 .container { padding: 24px; }
 
+/* LOGO UTAMA BULAT */
 .logo {
   width: 65vw;
   max-width: 260px;
+  aspect-ratio: 1/1;
   margin: 20px auto;
-  border-radius: 24px;
+  border-radius: 50%;
+  object-fit: cover;
   box-shadow: 0 0 25px rgba(0,0,0,.6);
 }
 
+/* BUTTON */
 .button {
   display: inline-block;
   margin-top: 18px;
@@ -173,6 +184,7 @@ body {
 
 <div class="container">
   <img src="pack_icon.png" class="logo fade-up delay-1">
+
   <h1 class="fade-up delay-2">Addon & Map Saya</h1>
   <p class="fade-up delay-3">Download addon & map buatan saya 🔥</p>
 
